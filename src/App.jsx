@@ -10,20 +10,14 @@ import Header from './components/Header'
 import NotFound from './pages/NotFound'
 
 function App() {
-  const { data } = useDatabaseValue(
+  const { data, isLoading } = useDatabaseValue(
     ['userId'],
     ref(database, 'userId/'),
-    { subscribe: true },
     {
-      placeholderData: [
-        {
-          key: '',
-          nama: 'tes',
-          nilai: [{ beat: ' ', spo2: ' ', temp: ' ', timestamp: ' ' }]
-        }
-      ]
+      subscribe: true
     }
   )
+  const mappedData = data?.map((v) => v)
   return (
     <BrowserRouter>
       <Header />

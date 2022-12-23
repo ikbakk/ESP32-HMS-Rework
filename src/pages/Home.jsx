@@ -1,16 +1,47 @@
 import { Link } from 'react-router-dom'
 import CardContainer from '../components/CardContainer'
+import { useDatabaseValue } from '@react-query-firebase/database'
+import { ref } from 'firebase/database'
+import { database } from '../config/firebase'
+
+import Loading from './Loading'
+import CardEmpty from '../components/CardEmpty'
 
 const Home = () => {
-  const cards = [0, 1, 2, 3]
+  const { data, isLoading } = useDatabaseValue(
+    ['userId'],
+    ref(database, 'userId'),
+    {
+      subscribe: true
+    }
+  )
+  const cards = []
+  const ShowCards = () => {
+    return (
+      <>
+        {(data === undefined) | (data.length === 0) ? (
+          <CardEmpty />
+        ) : (
+          data.map((data) => {
+            return <CardContainer key={data.id} data={data} />
+          })
+        )}
+      </>
+    )
+  }
+
   return (
-    <div className='w-full h-[95vh]'>
-      <div className='flex flex-row h-full flex-wrap justify-evenly p-5'>
-        {cards.map((card) => {
-          return <CardContainer />
-        })}
-      </div>
-    </div>
+    <>
+      {isLoading === true ? (
+        <Loading />
+      ) : (
+        <div className='h-[95vh] w-full'>
+          <div className='flex h-full flex-row flex-wrap justify-evenly p-5'>
+            <ShowCards />
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 
