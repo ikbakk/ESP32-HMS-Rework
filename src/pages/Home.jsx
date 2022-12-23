@@ -1,11 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const Home = () => {
-  return (
-    <div>
-      <Link to='/charts'>Charts</Link>
-    </div>
-  )
+  return <div>Homepage</div>
 }
 
 export default Home
