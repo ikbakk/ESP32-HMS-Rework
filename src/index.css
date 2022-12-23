@@ -1,12 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer components {
-  .card-container {
-    @apply card w-52 h-72 m-5 bg-primary text-base-300 shadow-xl;
-  }
-  .card-header {
-    @apply h-12 rounded-t-xl flex flex-row w-full bg-white items-center;
-  }
-}

@@ -26,8 +26,8 @@ const Header = () => {
         {menus.map((menu) => {
           const activeLink =
             active === menu.name
-              ? 'bg-primary rounded-lg text-base-300 font-semibold'
-              : ''
+              ? 'bg-primary-content rounded-lg text-primary font-semibold'
+              : 'hover:bg-primary-content hover:rounded-lg hover:text-primary'
           return (
             <li
               onClick={() => setActive(menu.name)}
@@ -42,10 +42,10 @@ const Header = () => {
   }
 
   return (
-    <header className='navbar bg-base-300'>
+    <header className='navbar bg-primary text-primary-content'>
       <div className='navbar-start'>
         <div className='dropdown'>
-          <label tabIndex={0} className='btn btn-ghost lg:hidden'>
+          <label tabIndex={0} className='btn-ghost btn lg:hidden'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-5 w-5'
@@ -62,22 +62,24 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
+            className='dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow'>
             <ListMenus />
           </ul>
         </div>
-        <div className='flex-row flex duration-150 items-center space-x-5 mx-3'>
-          <TbHeartRateMonitor className='lg:text-5xl md:text-3xl text-xl' />
-          <h1 className='hidden lg:flex text-3xl'>Room Monitor</h1>
+        <div className='mx-3 flex flex-row items-center space-x-5 duration-150'>
+          <TbHeartRateMonitor className='text-xl md:text-3xl lg:text-5xl' />
+          <h1 className='hidden font-display text-3xl lg:flex'>Room Monitor</h1>
         </div>
       </div>
       <div className='navbar-center hidden lg:flex'>
-        <ul className='menu menu-horizontal space-x-5 px-1'>
+        <ul className='menu menu-horizontal space-x-5 px-1 font-kanit'>
           <ListMenus />
         </ul>
       </div>
       <div className='navbar-end'>
-        <a className='btn'>Add Room</a>
+        <button className='btn-primary btn bg-primary-content font-kanit font-light text-primary hover:bg-transparent hover:text-primary-content hover:outline-primary-focus hover:outline'>
+          Add Room
+        </button>
       </div>
     </header>
   )
