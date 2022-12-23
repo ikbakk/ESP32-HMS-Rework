@@ -3,7 +3,6 @@ import { RiEditLine, RiCloseCircleLine } from 'react-icons/ri'
 import CardFront from './CardFront'
 
 const CardContainer = ({ data }) => {
-  const id = data.id
   const nama = data.nama
   const nilai = Object.values(data.nilai)
   const beat = nilai.map((nilai) => nilai.beat)
@@ -17,7 +16,7 @@ const CardContainer = ({ data }) => {
           size={20}
           className='hover:cursor-pointer hover:rounded hover:bg-[#00000033]'
         />
-        <h2 className='text-center text-2xl'>Room {id + 1}</h2>
+        <h2 className='text-center text-2xl'>Room </h2>
         <RiCloseCircleLine
           size={20}
           className='hover:cursor-pointer hover:rounded hover:bg-[#00000033] hover:text-red-600'

@@ -2,8 +2,8 @@ import { TailSpin } from 'react-loader-spinner'
 
 const Loading = () => {
   return (
-    <div class='grid h-[90vh] place-content-center bg-base-100 px-4'>
-      <div class=''>
+    <div className='grid h-[90vh] place-content-center bg-base-100 px-4'>
+      <div>
         <TailSpin
           height='80'
           width='80'
@@ -11,7 +11,6 @@ const Loading = () => {
           ariaLabel='tail-spin-loading'
           radius='1'
           wrapperStyle={{}}
-          wrapperClass=''
           visible={true}
         />
       </div>

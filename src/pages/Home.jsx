@@ -15,7 +15,7 @@ const Home = () => {
       subscribe: true
     }
   )
-  const cards = []
+
   const ShowCards = () => {
     return (
       <>
@@ -23,7 +23,7 @@ const Home = () => {
           <CardEmpty />
         ) : (
           data.map((data) => {
-            return <CardContainer key={data.id} data={data} />
+            return <CardContainer key={data.nama} data={data} />
           })
         )}
       </>

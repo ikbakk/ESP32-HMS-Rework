@@ -32,7 +32,7 @@ const Header = () => {
             <li
               onClick={() => setActive(menu.name)}
               className={activeLink}
-              key={menu.id}>
+              key={menu.name}>
               <Link to={menu.path}>{menu.name}</Link>
             </li>
           )
@@ -62,7 +62,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className='dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow'>
+            className='dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-primary p-2 font-kanit shadow'>
             <ListMenus />
           </ul>
         </div>
