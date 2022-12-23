@@ -4,17 +4,17 @@ import CardFront from './CardFront'
 
 const CardContainer = () => {
   return (
-    <div className='card w-52 h-72 m-5 bg-secondary-content text-base-300 outline outline-primary-focus shadow-xl'>
-      <div className='h-1/6 rounded-t-xl flex flex-row w-full justify-around text-2xl bg-white items-center'>
-        <div className='w-1/4 flex justify-center'>
-          <RiEditLine className='hover:cursor-pointer hover:bg-[#00000033] hover:rounded' />
-        </div>
-        <div className='w-2/4'>
-          <h2 className='text-center '>Room</h2>
-        </div>
-        <div className='w-1/4 flex justify-center'>
-          <RiCloseCircleLine className='hover:text-red-600 hover:cursor-pointer hover:bg-[#00000033] hover:rounded' />
-        </div>
+    <div className='card m-5 h-72 w-52 bg-secondary shadow-xl outline outline-secondary-focus'>
+      <div className='flex h-1/6 w-full flex-row items-center justify-between rounded-t-xl border-b-4 border-secondary-focus bg-success px-3'>
+        <RiEditLine
+          size={20}
+          className='hover:cursor-pointer hover:rounded hover:bg-[#00000033]'
+        />
+        <h2 className='text-center text-2xl'>Room 12</h2>
+        <RiCloseCircleLine
+          size={20}
+          className='hover:cursor-pointer hover:rounded hover:bg-[#00000033] hover:text-red-600'
+        />
       </div>
       <div className='h-5/6 w-full'>
         <CardFront />
