@@ -22,8 +22,8 @@ const Home = () => {
         {(data === undefined) | (data.length === 0) ? (
           <CardEmpty />
         ) : (
-          data.map((data) => {
-            return <CardContainer key={data.nama} data={data} />
+          data.map((data, index) => {
+            return <CardContainer key={data.nama} index={index} data={data} />
           })
         )}
       </>
