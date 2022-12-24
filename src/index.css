@@ -40,7 +40,7 @@
   }
 
   .card-header {
-    @apply flex h-1/6 w-full flex-row items-center justify-between rounded-t-xl border-b-4 border-secondary-focus px-3;
+    @apply flex h-1/6 w-full flex-row items-center justify-between rounded-t-xl border-b-4 border-secondary-focus px-3 text-primary;
   }
 
   .card-content-body {
@@ -65,5 +65,9 @@
 
   .card-front-icon {
     @apply flex flex-row items-center justify-between;
+  }
+
+  .card-name {
+    @apply flex h-1/4 items-center justify-center text-center text-lg;
   }
 }

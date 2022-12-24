@@ -3,7 +3,7 @@ import { FaHeartbeat, FaLungs, FaTemperatureHigh } from 'react-icons/fa'
 const CardFront = ({ beat, temp, spo2, nama }) => {
   return (
     <div className='h-full w-full space-y-1 rounded-b-xl p-2 font-hanken text-accent'>
-      <div className='flex h-1/4 items-center justify-center text-center text-lg '>
+      <div className='card-name'>
         <h3>{nama}</h3>
       </div>
       <div className='h-3/4'>
@@ -18,7 +18,7 @@ const CardFront = ({ beat, temp, spo2, nama }) => {
           </div>
           <div className='card-front-icon'>
             <FaTemperatureHigh size={24} />
-            <p className='text-lg'>{temp[temp.length - 1]} C</p>
+            <p className='text-lg'>{temp[temp.length - 1]} °C</p>
           </div>
         </div>
       </div>

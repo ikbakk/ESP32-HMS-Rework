@@ -14,7 +14,7 @@ const CardBack = ({ beat, nama, spo2, temp, timestamp }) => {
 
   return (
     <div className='flex h-full w-full flex-col p-2 text-accent '>
-      <div className='flex h-1/4 items-center justify-center text-center text-lg '>
+      <div className='card-name '>
         <h3>{nama}</h3>
       </div>
       <table className='h-3/4'>
@@ -41,7 +41,7 @@ const CardBack = ({ beat, nama, spo2, temp, timestamp }) => {
             <td>{statistics(spo2).minData}</td>
             <td>{statistics(spo2).avgData}</td>
             <td>{statistics(spo2).maxData}</td>
-            <td className='text-right'>bpm</td>
+            <td className='text-right'>%</td>
           </tr>
           <tr className='text-center'>
             <td>
@@ -50,7 +50,7 @@ const CardBack = ({ beat, nama, spo2, temp, timestamp }) => {
             <td>{statistics(temp).minData}</td>
             <td>{statistics(temp).avgData}</td>
             <td>{statistics(temp).maxData}</td>
-            <td className='text-right'>bpm</td>
+            <td className='text-right'>°C</td>
           </tr>
         </tbody>
       </table>

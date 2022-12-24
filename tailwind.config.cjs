@@ -23,8 +23,8 @@ module.exports = withAnimations({
           'base-100': '#494949',
           info: '#91CCF3',
           success: '#19665E',
-          warning: '#947305',
-          error: '#F76E7E'
+          warning: '#F0D05C',
+          error: '#EE5353'
         }
       }
     ]
