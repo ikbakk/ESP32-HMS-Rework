@@ -10,14 +10,6 @@ import Header from './components/Header'
 import NotFound from './pages/NotFound'
 
 function App() {
-  const { data, isLoading } = useDatabaseValue(
-    ['userId'],
-    ref(database, 'userId/'),
-    {
-      subscribe: true
-    }
-  )
-  const mappedData = data?.map((v) => v)
   return (
     <BrowserRouter>
       <Header />

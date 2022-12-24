@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withAnimations = require('animated-tailwindcss')
+
+module.exports = withAnimations({
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -27,5 +29,10 @@ module.exports = {
       }
     ]
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')]
-}
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+    require('@tailwindcss/typography'),
+    require('daisyui')
+  ]
+})

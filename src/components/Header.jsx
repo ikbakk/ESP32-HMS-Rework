@@ -42,7 +42,7 @@ const Header = () => {
   }
 
   return (
-    <header className='navbar bg-primary text-primary-content'>
+    <header className='header-container'>
       <div className='navbar-start'>
         <div className='dropdown'>
           <label tabIndex={0} className='btn-ghost btn lg:hidden'>
@@ -60,9 +60,7 @@ const Header = () => {
               />
             </svg>
           </label>
-          <ul
-            tabIndex={0}
-            className='dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-primary p-2 font-kanit shadow'>
+          <ul tabIndex={0} className='header-menu-dropdown'>
             <ListMenus />
           </ul>
         </div>
@@ -72,14 +70,12 @@ const Header = () => {
         </div>
       </div>
       <div className='navbar-center hidden lg:flex'>
-        <ul className='menu menu-horizontal space-x-5 px-1 font-kanit'>
+        <ul className='header-menu-horizontal'>
           <ListMenus />
         </ul>
       </div>
       <div className='navbar-end'>
-        <button className='btn-primary btn bg-primary-content font-kanit font-light text-primary hover:bg-transparent hover:text-primary-content hover:outline-primary-focus hover:outline'>
-          Add Room
-        </button>
+        <button className='header-add-btn'>Add Room</button>
       </div>
     </header>
   )

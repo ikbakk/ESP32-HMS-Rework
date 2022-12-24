@@ -19,12 +19,12 @@ const Home = () => {
   const ShowCards = () => {
     return (
       <>
-        {(data === undefined) | (data.length === 0) ? (
-          <CardEmpty />
-        ) : (
+        {data && data.length ? (
           data.map((data, index) => {
             return <CardContainer key={data.nama} index={index} data={data} />
           })
+        ) : (
+          <CardEmpty />
         )}
       </>
     )

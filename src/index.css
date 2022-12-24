@@ -1,3 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .header-container {
+    @apply navbar bg-primary text-primary-content;
+  }
+
+  .header-menu-dropdown {
+    @apply dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-primary p-2 font-kanit shadow;
+  }
+
+  .header-menu-horizontal {
+    @apply menu menu-horizontal space-x-5 px-1 font-kanit;
+  }
+
+  .header-add-btn {
+    @apply btn-primary btn bg-primary-content font-kanit font-light text-primary hover:bg-transparent hover:text-primary-content hover:outline-2 hover:outline-primary-focus hover:outline;
+  }
+
+  .card-container {
+    @apply m-5 h-72 w-52 rounded-xl outline-dashed outline-2 outline-secondary-focus [perspective:1100px];
+  }
+
+  .card-face-body {
+    @apply relative h-full w-full rounded-xl outline outline-secondary-focus duration-500 [transform-style:preserve-3d] hover:cursor-pointer  hover:shadow-lg hover:shadow-primary-focus;
+  }
+
+  .card-face {
+    @apply absolute h-full w-full rounded-xl bg-primary [backface-visibility:hidden];
+  }
+
+  .card-face-front {
+    @apply [transform:rotateY(0deg)];
+  }
+
+  .card-face-back {
+    @apply [transform:rotateY(180deg)];
+  }
+
+  .card-header {
+    @apply flex h-1/6 w-full flex-row items-center justify-between rounded-t-xl border-b-4 border-secondary-focus px-3;
+  }
+
+  .card-content-body {
+    @apply h-4/6 w-full;
+  }
+
+  .card-footer {
+    @apply flex h-1/6 w-full flex-row items-end justify-between p-3 text-accent;
+  }
+
+  .card-button {
+    @apply duration-75 hover:cursor-pointer hover:rounded hover:bg-[#00000033];
+  }
+
+  .card-empty-container {
+    @apply card m-5 flex h-72 w-52 items-center justify-center space-y-5 bg-secondary p-5 font-hanken text-accent shadow-xl outline outline-secondary-focus;
+  }
+
+  .card-empty-add {
+    @apply flex h-3/4 w-3/4 flex-col items-center justify-center rounded-xl bg-primary hover:cursor-pointer hover:bg-primary-focus;
+  }
+
+  .card-front-icon {
+    @apply flex flex-row items-center justify-between;
+  }
+}

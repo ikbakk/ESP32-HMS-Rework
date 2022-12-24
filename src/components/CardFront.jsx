@@ -1,5 +1,4 @@
 import { FaHeartbeat, FaLungs, FaTemperatureHigh } from 'react-icons/fa'
-import { MdOutlineKeyboardReturn, MdDeleteSweep } from 'react-icons/md'
 
 const CardFront = ({ beat, temp, spo2, nama }) => {
   return (
@@ -9,23 +8,18 @@ const CardFront = ({ beat, temp, spo2, nama }) => {
       </div>
       <div className='h-3/4'>
         <div className='grid grid-rows-3 items-center gap-4 px-3'>
-          <div className='flex flex-row items-center justify-between'>
+          <div className='card-front-icon'>
             <FaHeartbeat size={24} />
             <p className='text-lg'>{beat[beat.length - 1]} bpm</p>
           </div>
-          <div className='flex flex-row items-center justify-between'>
+          <div className='card-front-icon'>
             <FaLungs size={24} />
             <p className='text-lg'>{spo2[spo2.length - 1]} %</p>
           </div>
-          <div className='flex flex-row items-center justify-between'>
+          <div className='card-front-icon'>
             <FaTemperatureHigh size={24} />
             <p className='text-lg'>{temp[temp.length - 1]} C</p>
           </div>
-        </div>
-        <div className='flex h-1/4 w-full flex-row items-end justify-between'>
-          <MdDeleteSweep size={20} />
-          <p>between</p>
-          <MdOutlineKeyboardReturn size={20} />
         </div>
       </div>
     </div>
