@@ -7,10 +7,11 @@ import { useNavigate } from 'react-router-dom'
 import CardFront from './CardFront'
 import CardBack from './CardBack'
 import TimeIntervalLabel from './TimeIntervalLabel'
+import ModalEditName from './ModalEditName'
 
 const CardContainer = ({ data, index }) => {
   const [isFlipped, setIsFlipped] = useState(false)
-  const [alert, setAlert] = useState('bg-success')
+  const [modalOpen, setModalOpen] = useState(false)
 
   const nama = data.nama
   const nilai = Object.values(data.nilai)
@@ -72,6 +73,10 @@ const CardContainer = ({ data, index }) => {
     setIsFlipped(!isFlipped)
   }
 
+  const modalCloseHanle = () => {
+    setModalOpen(false)
+  }
+
   let navigate = useNavigate()
   const handleCardClick = () => {
     // navigate(`detail/${sensorId}`)
@@ -90,7 +95,11 @@ const CardContainer = ({ data, index }) => {
             onClick={handleCardClick}
             className={`card-face card-face-front`}>
             <div className={`card-header ${colorCode(paramRange).className}`}>
-              <RiEditLine size={20} className='card-button' />
+              <RiEditLine
+                onClick={() => setModalOpen(true)}
+                size={20}
+                className='card-button'
+              />
               <h2 className='text-center text-2xl'>Room {index + 1}</h2>
               <RiCloseCircleLine
                 size={20}
@@ -142,6 +151,11 @@ const CardContainer = ({ data, index }) => {
           </div>
         </div>
       </div>
+      <ModalEditName
+        index={index}
+        modalClose={modalCloseHanle}
+        modalOpen={modalOpen}
+      />
     </>
   )
 }
