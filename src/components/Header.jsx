@@ -1,9 +1,15 @@
 import { TbHeartRateMonitor } from 'react-icons/tb'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import ModalAddData from './ModalAddData'
 
 const Header = () => {
   const [active, setActive] = useState('')
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const modalCloseHanle = () => {
+    setModalOpen(false)
+  }
 
   const menus = [
     {
@@ -75,8 +81,11 @@ const Header = () => {
         </ul>
       </div>
       <div className='navbar-end'>
-        <button className='header-add-btn'>Add Room</button>
+        <button onClick={() => setModalOpen(true)} className='header-add-btn'>
+          Add Room
+        </button>
       </div>
+      <ModalAddData modalOpen={modalOpen} modalClose={modalCloseHanle} />
     </header>
   )
 }

@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { useState } from 'react'
 import { RiEditLine, RiCloseCircleLine } from 'react-icons/ri'
-import { MdOutlineKeyboardReturn, MdDeleteSweep } from 'react-icons/md'
+import { MdOutlineKeyboardReturn } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
 import { useDatabaseRemoveMutation } from '@react-query-firebase/database'
 import { ref } from 'firebase/database'
@@ -48,7 +48,7 @@ const CardContainer = ({ data, index }) => {
     let result = ' '
     let message = ' '
     if (_.isEqual(_.mean(beat), 0)) {
-      result = 'bg-info'
+      result = 'bg-info text-accent'
       message = `Data ${_.upperCase(
         nama
       )} tidak tersedia di RUANG ${_.upperCase(index + 1)}`
@@ -95,7 +95,6 @@ const CardContainer = ({ data, index }) => {
   let navigate = useNavigate()
   const handleCardClick = () => {
     // navigate(`detail/${sensorId}`)
-    console.log('cardClicked')
   }
 
   return (
