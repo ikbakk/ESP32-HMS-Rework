@@ -3,6 +3,9 @@ import { useState } from 'react'
 import { RiEditLine, RiCloseCircleLine } from 'react-icons/ri'
 import { MdOutlineKeyboardReturn, MdDeleteSweep } from 'react-icons/md'
 import { useNavigate } from 'react-router-dom'
+import { useDatabaseRemoveMutation } from '@react-query-firebase/database'
+import { ref } from 'firebase/database'
+import { database } from '../config/firebase'
 
 import CardFront from './CardFront'
 import CardBack from './CardBack'
@@ -13,12 +16,25 @@ const CardContainer = ({ data, index }) => {
   const [isFlipped, setIsFlipped] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
 
+  const flip =
+    isFlipped === true
+      ? '[transform:rotateY(180deg)]'
+      : '[transform:rotateY(0deg)]'
+
   const nama = data.nama
   const nilai = Object.values(data.nilai)
   const beat = nilai.map((nilai) => nilai.beat)
   const spo2 = nilai.map((nilai) => nilai.spo2)
   const temp = nilai.map((nilai) => nilai.temp)
   const timestamp = nilai.map((nilai) => nilai.timestamp)
+
+  const danger = { a: false, b: false, c: false }
+  const warnBeat = { a: false, b: true, c: true }
+  const warnOxy = { a: true, b: false, c: true }
+  const warnTemp = { a: true, b: true, c: false }
+
+  const dbRef = ref(database, `userId/${index}`)
+  const mutation = useDatabaseRemoveMutation(dbRef)
 
   const range = () => {
     const rangeBeat = _.inRange(_.mean(_.compact(beat)), 60, 100)
@@ -27,11 +43,6 @@ const CardContainer = ({ data, index }) => {
     return { a: rangeBeat, b: rangeSpo2, c: rangeTemp }
   }
   const paramRange = range()
-
-  const danger = { a: false, b: false, c: false }
-  const warnBeat = { a: false, b: true, c: true }
-  const warnOxy = { a: true, b: false, c: true }
-  const warnTemp = { a: true, b: true, c: false }
 
   const colorCode = (object) => {
     let result = ' '
@@ -77,15 +88,15 @@ const CardContainer = ({ data, index }) => {
     setModalOpen(false)
   }
 
+  const deleteCard = () => {
+    mutation.mutate()
+  }
+
   let navigate = useNavigate()
   const handleCardClick = () => {
     // navigate(`detail/${sensorId}`)
     console.log('cardClicked')
   }
-  const flip =
-    isFlipped === true
-      ? '[transform:rotateY(180deg)]'
-      : '[transform:rotateY(0deg)]'
 
   return (
     <>
@@ -102,6 +113,7 @@ const CardContainer = ({ data, index }) => {
               />
               <h2 className='text-center text-2xl'>Room {index + 1}</h2>
               <RiCloseCircleLine
+                onClick={deleteCard}
                 size={20}
                 className='card-button hover:bg-error'
               />
@@ -110,7 +122,6 @@ const CardContainer = ({ data, index }) => {
               <CardFront beat={beat} temp={temp} spo2={spo2} nama={nama} />
             </div>
             <div className='card-footer'>
-              <MdDeleteSweep className='card-button' size={20} />
               <TimeIntervalLabel
                 className={'font-hanken'}
                 start={_.head(timestamp)}
@@ -136,7 +147,6 @@ const CardContainer = ({ data, index }) => {
               <CardBack beat={beat} temp={temp} spo2={spo2} nama={nama} />
             </div>
             <div className='card-footer'>
-              <MdDeleteSweep className='card-button' size={20} />
               <TimeIntervalLabel
                 className={'font-hanken'}
                 start={_.head(timestamp)}

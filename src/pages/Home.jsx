@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import CardContainer from '../components/CardContainer'
 import { useDatabaseValue } from '@react-query-firebase/database'
 import { ref } from 'firebase/database'
@@ -15,7 +14,6 @@ const Home = () => {
       subscribe: true
     }
   )
-
   const ShowCards = () => {
     return (
       <>

@@ -48,7 +48,7 @@
   }
 
   .card-footer {
-    @apply flex h-1/6 w-full flex-row items-end justify-between p-3 text-accent;
+    @apply flex h-1/6 w-full flex-col items-center text-accent;
   }
 
   .card-button {
