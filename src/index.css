@@ -88,10 +88,30 @@
   }
 
   .report-wrapper {
-    @apply relative m-2 flex h-[17.2rem] w-80 flex-col items-center rounded-xl bg-primary p-2 text-accent outline outline-primary-focus;
+    @apply relative m-2 flex h-fit w-80 flex-col items-center rounded-xl bg-primary p-2 text-accent outline outline-primary-focus;
   }
 
   .report-export-btn {
     @apply flex flex-row items-center space-x-2 rounded-lg px-5 font-hanken hover:cursor-pointer hover:bg-secondary-focus;
+  }
+
+  .detail-wrapper {
+    @apply flex w-full flex-row justify-evenly p-6;
+  }
+
+  .detail-readings {
+    @apply my-2 flex w-[75%] flex-col space-y-5;
+  }
+
+  .detail-reading {
+    @apply flex h-64 flex-row space-x-4;
+  }
+
+  .detail-reading-icon {
+    @apply flex h-full w-[30%] flex-col items-center justify-center space-y-4 rounded-xl bg-secondary text-3xl text-accent outline  outline-secondary-focus;
+  }
+
+  .detail-reading-chart {
+    @apply flex h-full w-[70%] items-center rounded-xl bg-secondary outline outline-secondary-focus;
   }
 }

@@ -21,7 +21,7 @@ const ReportTable = ({ sensorId, data, maxRow }) => {
           <h3 className='text-xl'>{nama}</h3>
         </div>
       </div>
-      <div className='m-1 flex w-full rounded-xl bg-secondary-focus'>
+      <div className='m-1 flex w-full rounded-xl bg-secondary-focus p-2'>
         <table className='text-center'>
           <tbody>
             <tr>

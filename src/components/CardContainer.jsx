@@ -99,8 +99,7 @@ const CardContainer = ({ sensorId, data }) => {
 
   let navigate = useNavigate()
   const handleCardClick = () => {
-    // navigate(`detail/${sensorId}`)
-    console.log('clicked')
+    navigate(`detail/${id}`)
   }
 
   return (
