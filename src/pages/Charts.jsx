@@ -18,7 +18,6 @@ const Charts = () => {
           .filter((d) => d !== undefined)
 
         const nilai = Object.values(selectedData).map((n) => Object.values(n))
-        const nama = nilai.map((n) => n[0])
         const result = nilai.map((n) => {
           return {
             nama: n[0],
@@ -31,7 +30,6 @@ const Charts = () => {
       }
     }
   )
-  console.log(data)
   return (
     <>
       {isLoading === true ? (
