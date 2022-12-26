@@ -12,15 +12,20 @@ import CardBack from './CardBack'
 import TimeIntervalLabel from './TimeIntervalLabel'
 import ModalEditName from './ModalEditName'
 
-const CardContainer = ({ data, index }) => {
+const CardContainer = ({ sensorId, data }) => {
   const [isFlipped, setIsFlipped] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
-
   const flip =
     isFlipped === true
       ? '[transform:rotateY(180deg)]'
       : '[transform:rotateY(0deg)]'
 
+  const danger = { a: false, b: false, c: false }
+  const warnBeat = { a: false, b: true, c: true }
+  const warnOxy = { a: true, b: false, c: true }
+  const warnTemp = { a: true, b: true, c: false }
+
+  const id = _.toNumber(sensorId)
   const nama = data.nama
   const nilai = Object.values(data.nilai)
   const beat = nilai.map((nilai) => nilai.beat)
@@ -28,12 +33,7 @@ const CardContainer = ({ data, index }) => {
   const temp = nilai.map((nilai) => nilai.temp)
   const timestamp = nilai.map((nilai) => nilai.timestamp)
 
-  const danger = { a: false, b: false, c: false }
-  const warnBeat = { a: false, b: true, c: true }
-  const warnOxy = { a: true, b: false, c: true }
-  const warnTemp = { a: true, b: true, c: false }
-
-  const dbRef = ref(database, `userId/${index}`)
+  const dbRef = ref(database, `userId/${id}`)
   const mutation = useDatabaseRemoveMutation(dbRef)
 
   const range = () => {
@@ -51,27 +51,27 @@ const CardContainer = ({ data, index }) => {
       result = 'bg-info text-accent'
       message = `Data ${_.upperCase(
         nama
-      )} tidak tersedia di RUANG ${_.upperCase(index + 1)}`
+      )} tidak tersedia di RUANG ${_.upperCase(id)}`
     } else if (_.isEqual(object, danger)) {
       result = 'bg-error'
       message = `Periksa oksimeter dan sensor suhu ${_.upperCase(
         nama
-      )} di RUANG ${_.upperCase(index + 1)}`
+      )} di RUANG ${_.upperCase(id)}`
     } else if (_.isEqual(object, warnOxy)) {
       result = 'bg-warning text-accent'
       message = `Periksa oksimeter ${_.upperCase(nama)} di RUANG ${_.upperCase(
-        index + 1
+        id
       )}`
     } else if (_.isEqual(object, warnBeat)) {
       result = 'bg-warning text-accent'
       message = `Periksa oksimeter ${_.upperCase(nama)} di RUANG ${_.upperCase(
-        index + 1
+        id
       )}`
     } else if (_.isEqual(object, warnTemp)) {
       result = 'bg-warning text-accent'
       message = `Periksa sensor suhu ${_.upperCase(
         nama
-      )} di RUANG ${_.upperCase(index + 1)}`
+      )} di RUANG ${_.upperCase(id)}`
     } else {
       result = 'bg-success'
       message = ' '
@@ -88,13 +88,19 @@ const CardContainer = ({ data, index }) => {
     setModalOpen(false)
   }
 
-  const deleteCard = () => {
+  const deleteCard = (event) => {
+    event.stopPropagation()
     mutation.mutate()
+  }
+  const editCard = (event) => {
+    event.stopPropagation()
+    setModalOpen(true)
   }
 
   let navigate = useNavigate()
   const handleCardClick = () => {
     // navigate(`detail/${sensorId}`)
+    console.log('clicked')
   }
 
   return (
@@ -106,11 +112,11 @@ const CardContainer = ({ data, index }) => {
             className={`card-face card-face-front`}>
             <div className={`card-header ${colorCode(paramRange).className}`}>
               <RiEditLine
-                onClick={() => setModalOpen(true)}
+                onClick={editCard}
                 size={20}
                 className='card-button'
               />
-              <h2 className='text-center text-2xl'>Room {index + 1}</h2>
+              <h2 className='text-center text-2xl'>Room {id + 1}</h2>
               <RiCloseCircleLine
                 onClick={deleteCard}
                 size={20}
@@ -136,7 +142,7 @@ const CardContainer = ({ data, index }) => {
           <div onClick={handleCardClick} className={`card-face card-face-back`}>
             <div className={`card-header ${colorCode(paramRange).className}`}>
               <RiEditLine size={20} className='card-button' />
-              <h2 className='text-center text-2xl'>Room {index + 1}</h2>
+              <h2 className='text-center text-2xl'>Room {id + 1}</h2>
               <RiCloseCircleLine
                 size={20}
                 className='card-button hover:bg-error'
@@ -161,7 +167,7 @@ const CardContainer = ({ data, index }) => {
         </div>
       </div>
       <ModalEditName
-        index={index}
+        id={id}
         modalClose={modalCloseHanle}
         modalOpen={modalOpen}
       />

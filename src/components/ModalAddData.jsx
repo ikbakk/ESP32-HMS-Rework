@@ -7,7 +7,7 @@ import {
 import { ref } from 'firebase/database'
 import { database } from '../config/firebase'
 
-export default function ModalAddData({ modalOpen, modalClose, index }) {
+export default function ModalAddData({ modalOpen, modalClose }) {
   const FORM_INITIAL_STATE = {
     name: '',
     roomId: ''
@@ -31,11 +31,6 @@ export default function ModalAddData({ modalOpen, modalClose, index }) {
       [e.target.id]: e.target.value
     })
   }
-  const submitError = () => {
-    alert(
-      `Room number ${form.roomId} already has patient, please input room number that available for new patient`
-    )
-  }
 
   const submitSuccess = (e) => {
     changeHandle(e)
@@ -45,7 +40,7 @@ export default function ModalAddData({ modalOpen, modalClose, index }) {
   }
   const submitHandle = (e) => {
     e.preventDefault()
-    form.roomId > data.length ? submitSuccess(e) : submitError()
+    submitSuccess(e)
   }
   return (
     <>
