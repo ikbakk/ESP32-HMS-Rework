@@ -92,6 +92,6 @@
   }
 
   .report-export-btn {
-    @apply flex flex-row items-center space-x-2 rounded-lg px-5 hover:cursor-pointer hover:bg-secondary-focus;
+    @apply flex flex-row items-center space-x-2 rounded-lg px-5 font-hanken hover:cursor-pointer hover:bg-secondary-focus;
   }
 }
