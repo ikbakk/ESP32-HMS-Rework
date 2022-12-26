@@ -1,4 +1,4 @@
-import _, { toNumber, last } from 'lodash'
+import _ from 'lodash'
 import { useParams } from 'react-router-dom'
 import { FaHeartbeat, FaLungs, FaTemperatureHigh } from 'react-icons/fa'
 import { useDatabaseValue } from '@react-query-firebase/database'

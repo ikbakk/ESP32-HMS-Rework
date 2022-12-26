@@ -1,16 +1,17 @@
 import _ from 'lodash'
-import { HiOutlineDownload } from 'react-icons/hi'
 import {
   FaHeartbeat,
   FaLungs,
   FaTemperatureHigh,
   FaHistory
 } from 'react-icons/fa'
+
 import timeFormatter from '../config/timeFormatter'
+import DownloadButton from './DownloadButton'
 
 const ReportTable = ({ sensorId, data, maxRow }) => {
   const id = _.toNumber(sensorId)
-  const nama = data.nama
+  const name = data.nama
   const nilai = Object.values(data.nilai)
 
   return (
@@ -18,7 +19,7 @@ const ReportTable = ({ sensorId, data, maxRow }) => {
       <div className='flex w-full flex-row justify-center p-2'>
         <div className='flex flex-col text-center'>
           <h2 className='text-2xl'>Ruang {id + 1}</h2>
-          <h3 className='text-xl'>{nama}</h3>
+          <h3 className='text-xl'>{name}</h3>
         </div>
       </div>
       <div className='m-1 flex w-full rounded-xl bg-secondary-focus p-2'>
@@ -50,8 +51,11 @@ const ReportTable = ({ sensorId, data, maxRow }) => {
         </table>
       </div>
       <div className='report-export-btn'>
-        <HiOutlineDownload />
-        <p>Export to CSV </p>
+        <DownloadButton
+          data={data}
+          title='Export to CSV'
+          filename={`${sensorId} - ${name} - report ${new Date()}.csv`}
+        />
       </div>
     </div>
   )
