@@ -20,8 +20,8 @@ const Home = () => {
       {isLoading == true ? (
         <Loading />
       ) : (
-        <div className='h-[95vh] w-full'>
-          <div className='flex h-full flex-row flex-wrap justify-evenly p-5'>
+        <div className='home-wrapper'>
+          <div className='home-container'>
             {data === null ? (
               <CardEmpty />
             ) : (

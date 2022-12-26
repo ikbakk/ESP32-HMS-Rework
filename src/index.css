@@ -19,6 +19,14 @@
     @apply btn-primary btn bg-primary-content font-kanit font-light text-primary hover:bg-transparent hover:text-primary-content hover:outline-2 hover:outline-primary-focus hover:outline;
   }
 
+  .home-wrapper {
+    @apply h-[95vh] w-full;
+  }
+
+  .home-container {
+    @apply flex h-full flex-row flex-wrap justify-evenly p-5;
+  }
+
   .card-container {
     @apply m-5 h-72 w-52 rounded-xl outline-dashed outline-2 outline-secondary-focus [perspective:1100px];
   }
@@ -77,5 +85,13 @@
 
   .chart-container {
     @apply my-3 flex h-64 w-full items-center rounded-xl bg-secondary outline outline-2 outline-secondary-focus;
+  }
+
+  .report-wrapper {
+    @apply relative m-2 flex h-[17.2rem] w-80 flex-col items-center rounded-xl bg-primary p-2 text-accent outline outline-primary-focus;
+  }
+
+  .report-export-btn {
+    @apply flex flex-row items-center space-x-2 rounded-lg px-5 hover:cursor-pointer hover:bg-secondary-focus;
   }
 }
