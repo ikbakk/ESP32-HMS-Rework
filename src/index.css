@@ -95,12 +95,16 @@
     @apply flex flex-row items-center space-x-2 rounded-lg px-5 font-hanken hover:cursor-pointer hover:bg-secondary-focus;
   }
 
+  .detail-header {
+    @apply mt-7 flex w-1/2 flex-row justify-center space-x-5 rounded-lg bg-secondary text-accent outline outline-secondary-focus;
+  }
+
   .detail-wrapper {
     @apply flex w-full flex-row justify-evenly p-6;
   }
 
   .detail-readings {
-    @apply my-2 flex w-[75%] flex-col space-y-5;
+    @apply my-2 flex w-full flex-col space-y-5 lg:w-[75%];
   }
 
   .detail-reading {
@@ -108,7 +112,7 @@
   }
 
   .detail-reading-icon {
-    @apply flex h-full w-[30%] flex-col items-center justify-center space-y-4 rounded-xl bg-secondary text-3xl text-accent outline  outline-secondary-focus;
+    @apply flex h-full w-[30%] flex-col items-center justify-center space-y-4 rounded-xl bg-secondary text-center text-3xl text-accent outline  outline-secondary-focus;
   }
 
   .detail-reading-chart {

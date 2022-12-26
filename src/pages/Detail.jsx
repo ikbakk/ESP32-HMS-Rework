@@ -8,6 +8,7 @@ import { database } from '../config/firebase'
 import ReportTable from '../components/ReportTable'
 import LineSeriesChart from '../components/LineChart'
 import Loading from './Loading'
+import TimeAgoLabel from '../components/TimeAgoLabel'
 
 const Detail = () => {
   let { id } = useParams()
@@ -22,14 +23,20 @@ const Detail = () => {
   const beat = nilai.map((nilai) => nilai.beat)
   const spo2 = nilai.map((nilai) => nilai.spo2)
   const temp = nilai.map((nilai) => nilai.temp)
+  const timestamp = nilai.map((nilai) => nilai.timestamp)
   return (
     <>
       {isLoading === true ? (
         <Loading />
       ) : (
         <div className='flex w-full flex-col'>
-          <div className='justify-center'>
-            <div>{id}</div>
+          <div className='flex justify-center'>
+            <div className='detail-header'>
+              <p>Name: {nama}</p>
+              <p>
+                Updated <TimeAgoLabel date={_.last(timestamp)} />
+              </p>
+            </div>
           </div>
           <div className='detail-wrapper'>
             <div className='detail-readings'>
@@ -91,7 +98,7 @@ const Detail = () => {
                 </div>
               </div>
             </div>
-            <div className='mx-2 w-[25%] '>
+            <div className='mx-2 hidden w-[25%] lg:block '>
               <ReportTable sensorId={sensorId} data={data} maxRow={25} />
             </div>
           </div>
