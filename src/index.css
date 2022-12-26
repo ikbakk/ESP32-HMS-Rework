@@ -70,4 +70,12 @@
   .card-name {
     @apply flex h-1/4 items-center justify-center text-center text-lg;
   }
+
+  .charts-wrapper {
+    @apply flex w-full flex-col justify-evenly p-11;
+  }
+
+  .chart-container {
+    @apply my-3 flex h-64 w-full items-center rounded-xl bg-secondary outline outline-2 outline-secondary-focus;
+  }
 }
