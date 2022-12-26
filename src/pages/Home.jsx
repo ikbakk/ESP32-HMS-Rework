@@ -15,6 +15,7 @@ const Home = () => {
       keepPreviousData: true
     }
   )
+  console.log(data)
   return (
     <>
       {isLoading == true ? (
