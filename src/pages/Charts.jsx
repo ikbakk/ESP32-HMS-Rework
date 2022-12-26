@@ -13,14 +13,17 @@ const Charts = () => {
     { subscribe: true },
     {
       select: (data) => {
-        const selectedData = Object.values(data).map((d) => d.nilai)
+        const selectedData = Object.values(data)
+          .map((d) => d)
+          .filter((d) => d !== undefined)
+
         const nilai = Object.values(selectedData).map((n) => Object.values(n))
-        const result = nilai.map((r) => _.last(r))
+        const nama = nilai.map((n) => n[0])
+        const result = nilai.map((n) => _.last(Object.values(n[1])))
         return result
       }
     }
   )
-  // console.log(data)
   return (
     <>
       {isLoading === true ? (
