@@ -1,11 +1,11 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
-import Home from './pages/Home'
-import Charts from './pages/Charts'
-import History from './pages/History'
+import Home from './components/pages/Home'
+import Charts from './components/pages/Charts'
+import History from './components/pages/History'
 import Header from './components/Header'
-import NotFound from './pages/NotFound'
-import Detail from './pages/Detail'
+import NotFound from './components/pages/NotFound'
+import Detail from './components/pages/Detail'
 
 function App() {
   return (

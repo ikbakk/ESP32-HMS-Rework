@@ -1,11 +1,12 @@
+import CardContainer from '../CardContainer'
 import { useDatabaseValue } from '@react-query-firebase/database'
 import { ref } from 'firebase/database'
-import { database } from '../config/firebase'
+import { database } from '../../config/firebase'
 
-import ReportTable from '../components/ReportTable'
 import Loading from './Loading'
+import CardEmpty from '../CardEmpty'
 
-const History = () => {
+const Home = () => {
   const { data, isLoading } = useDatabaseValue(
     ['userId'],
     ref(database, `userId/`),
@@ -26,12 +27,7 @@ const History = () => {
             ) : (
               Object.entries(data).map((i) =>
                 i[1] == undefined ? null : (
-                  <ReportTable
-                    key={i[0]}
-                    sensorId={i[0]}
-                    data={i[1]}
-                    maxRow={5}
-                  />
+                  <CardContainer key={i[0]} sensorId={i[0]} data={i[1]} />
                 )
               )
             )}
@@ -42,4 +38,4 @@ const History = () => {
   )
 }
 
-export default History
+export default Home

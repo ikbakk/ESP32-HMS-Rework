@@ -3,12 +3,12 @@ import { useParams } from 'react-router-dom'
 import { FaHeartbeat, FaLungs, FaTemperatureHigh } from 'react-icons/fa'
 import { useDatabaseValue } from '@react-query-firebase/database'
 import { ref } from 'firebase/database'
-import { database } from '../config/firebase'
+import { database } from '../../config/firebase'
 
-import ReportTable from '../components/ReportTable'
-import LineSeriesChart from '../components/LineChart'
+import ReportTable from '../ReportTable'
+import LineSeriesChart from '../LineChart'
 import Loading from './Loading'
-import TimeAgoLabel from '../components/TimeAgoLabel'
+import TimeAgoLabel from '../TimeAgoLabel'
 
 const Detail = () => {
   let { id } = useParams()

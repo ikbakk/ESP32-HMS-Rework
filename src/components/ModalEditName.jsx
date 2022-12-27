@@ -4,10 +4,11 @@ import { useDatabaseUpdateMutation } from '@react-query-firebase/database'
 import { ref } from 'firebase/database'
 import { database } from '../config/firebase'
 
-export default function ModalEditName({ modalOpen, modalClose, index }) {
+export default function ModalEditName({ modalOpen, modalClose, id }) {
   const [name, setName] = useState('')
+  const [isOpen, setIsOpen] = useState(false)
 
-  const dbRef = ref(database, `userId/${index}`)
+  const dbRef = ref(database, `userId/${id}`)
   const mutation = useDatabaseUpdateMutation(dbRef)
 
   const editNode = () => {
@@ -16,16 +17,19 @@ export default function ModalEditName({ modalOpen, modalClose, index }) {
     })
   }
 
+  console.log(modalOpen)
   const submitHandle = (e) => {
     e.preventDefault()
-    modalClose()
     editNode()
     setName('')
   }
   return (
     <>
       <Transition appear show={modalOpen} as={Fragment}>
-        <Dialog as='div' className='relative z-10' onClose={modalClose}>
+        <Dialog
+          as='div'
+          className='relative z-10'
+          onClose={() => setIsOpen(false)}>
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'
@@ -68,7 +72,10 @@ export default function ModalEditName({ modalOpen, modalClose, index }) {
                           onChange={(e) => setName(e.target.value)}
                           className='input-primary input w-full'
                         />
-                        <button type='submit' className='btn-primary btn'>
+                        <button
+                          onClick={modalClose}
+                          type='submit'
+                          className='btn-primary btn'>
                           Submit
                         </button>
                       </div>

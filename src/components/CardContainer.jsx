@@ -140,9 +140,14 @@ const CardContainer = ({ sensorId, data }) => {
           </div>
           <div onClick={handleCardClick} className={`card-face card-face-back`}>
             <div className={`card-header ${colorCode(paramRange).className}`}>
-              <RiEditLine size={20} className='card-button' />
+              <RiEditLine
+                size={20}
+                onClick={editCard}
+                className='card-button'
+              />
               <h2 className='text-center text-2xl'>Room {id + 1}</h2>
               <RiCloseCircleLine
+                onClick={deleteCard}
                 size={20}
                 className='card-button hover:bg-error'
               />

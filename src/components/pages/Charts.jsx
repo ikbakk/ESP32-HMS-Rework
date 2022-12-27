@@ -1,9 +1,9 @@
 import _ from 'lodash'
-import GenericBarChart from '../components/BarChart'
-import Loading from '../pages/Loading'
+import GenericBarChart from '../BarChart'
+import Loading from './Loading'
 
 import { ref } from 'firebase/database'
-import { database } from '../config/firebase'
+import { database } from '../../config/firebase'
 import { useDatabaseValue } from '@react-query-firebase/database'
 
 const Charts = () => {
