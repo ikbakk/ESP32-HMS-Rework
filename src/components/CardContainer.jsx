@@ -46,37 +46,37 @@ const CardContainer = ({ sensorId, data }) => {
 
   const colorCode = (object) => {
     let result = ' '
-    let message = ' '
+    // let message = ' '
     if (_.isEqual(_.mean(beat), 0)) {
       result = 'bg-info text-accent'
-      message = `Data ${_.upperCase(
-        nama
-      )} tidak tersedia di RUANG ${_.upperCase(id)}`
+      // message = `Data ${_.upperCase(
+      //   nama
+      // )} tidak tersedia di RUANG ${_.upperCase(id)}`
     } else if (_.isEqual(object, danger)) {
       result = 'bg-error'
-      message = `Periksa oksimeter dan sensor suhu ${_.upperCase(
-        nama
-      )} di RUANG ${_.upperCase(id)}`
+      // message = `Periksa oksimeter dan sensor suhu ${_.upperCase(
+      //   nama
+      // )} di RUANG ${_.upperCase(id)}`
     } else if (_.isEqual(object, warnOxy)) {
       result = 'bg-warning text-accent'
-      message = `Periksa oksimeter ${_.upperCase(nama)} di RUANG ${_.upperCase(
-        id
-      )}`
+      // message = `Periksa oksimeter ${_.upperCase(nama)} di RUANG ${_.upperCase(
+      //   id
+      // )}`
     } else if (_.isEqual(object, warnBeat)) {
       result = 'bg-warning text-accent'
-      message = `Periksa oksimeter ${_.upperCase(nama)} di RUANG ${_.upperCase(
-        id
-      )}`
+      // message = `Periksa oksimeter ${_.upperCase(nama)} di RUANG ${_.upperCase(
+      //   id
+      // )}`
     } else if (_.isEqual(object, warnTemp)) {
       result = 'bg-warning text-accent'
-      message = `Periksa sensor suhu ${_.upperCase(
-        nama
-      )} di RUANG ${_.upperCase(id)}`
+      // message = `Periksa sensor suhu ${_.upperCase(
+      //   nama
+      // )} di RUANG ${_.upperCase(id)}`
     } else {
       result = 'bg-success'
-      message = ' '
+      // message = ' '
     }
-    return { className: result, toast: message }
+    return { className: result }
   }
 
   const flipHandle = (event) => {

@@ -13,11 +13,7 @@ const Details = () => {
 
   const { isLoading } = useDatabaseValue(
     [`userId/${sensorId}`],
-    ref(database, `userId/${sensorId}`),
-    { subscribe: true, toArray: false },
-    {
-      keepPreviousData: true
-    }
+    ref(database, `userId/${sensorId}`)
   )
   return <>{isLoading ? <Loading /> : <Detail />}</>
 }

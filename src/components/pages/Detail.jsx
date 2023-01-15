@@ -15,14 +15,13 @@ const Detail = () => {
   const sensorId = _.toNumber(id)
 
   const { data } = useDatabaseValue(
-    [`userId/${sensorId}`],
-    ref(database, `userId/${sensorId}`),
+    [`userId/${id}`],
+    ref(database, `userId/${id}`),
     { subscribe: true, toArray: false },
     {
       keepPreviousData: true
     }
   )
-  console.log(data)
   const nama = data.nama
   const nilai = Object.values(data.nilai)
   const beat = nilai.map((nilai) => nilai.beat)

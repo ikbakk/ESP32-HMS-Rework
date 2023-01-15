@@ -14,7 +14,7 @@ dist-ssr
 .env
 .firebaserc
 firebase.json
-.firebase
+/.firebase
 
 # Editor directories and files
 .vscode/*
@@ -26,3 +26,5 @@ firebase.json
 *.njsproj
 *.sln
 *.sw?
+.firebase/hosting.ZGlzdA.cache
+.firebase/hosting.ZGlzdA.cache
