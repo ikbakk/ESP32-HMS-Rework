@@ -8,7 +8,7 @@ export default function ModalEditName({ modalOpen, modalClose, id }) {
   const [name, setName] = useState('')
   const [isOpen, setIsOpen] = useState(false)
 
-  const dbRef = ref(database, `userId/${id}`)
+  const dbRef = ref(database, `userId/${id}/`)
   const mutation = useDatabaseUpdateMutation(dbRef)
 
   const editNode = () => {
@@ -17,7 +17,6 @@ export default function ModalEditName({ modalOpen, modalClose, id }) {
     })
   }
 
-  console.log(modalOpen)
   const submitHandle = (e) => {
     e.preventDefault()
     editNode()
@@ -26,10 +25,7 @@ export default function ModalEditName({ modalOpen, modalClose, id }) {
   return (
     <>
       <Transition appear show={modalOpen} as={Fragment}>
-        <Dialog
-          as='div'
-          className='relative z-10'
-          onClose={() => setIsOpen(false)}>
+        <Dialog as='div' className='relative z-10' onClose={modalClose}>
           <Transition.Child
             as={Fragment}
             enter='ease-out duration-300'
